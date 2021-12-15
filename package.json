@@ -1,6 +1,6 @@
 {
 	"name": "sfdx-metadata-utils",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"author": "Ziemniakoss",
 	"bugs": "https://github.com/Ziemniakoss/sfdx-metadata-utils/issues",
 	"dependencies": {
