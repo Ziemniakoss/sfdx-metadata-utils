@@ -1,3 +1,3 @@
 export abstract class Metadata {
-	fullName: string
+	fullName: string;
 }

@@ -1,3 +1,3 @@
 export interface IMetadataFilesFinder {
-	findFiles(): Promise<string[]>
+	findFiles(): Promise<string[]>;
 }

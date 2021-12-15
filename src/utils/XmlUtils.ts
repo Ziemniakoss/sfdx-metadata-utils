@@ -1,9 +1,9 @@
 import { promises as fs } from "fs";
+import * as path from "path";
 
 const xml2js = require("xml2js");
 
 export class XmlUtils {
-
 	parser = new xml2js.Parser();
 
 	async convertXmlStringToJson(xmlString: string): Promise<any> {
@@ -11,18 +11,19 @@ export class XmlUtils {
 	}
 
 	async readXmlFromFile(filePath: string): Promise<string> {
-		return fs.readFile(filePath, "utf-8")
+		return fs.readFile(filePath, "utf-8");
 	}
 
-	async writeJsonAsXml(json: any, filePath: string): Promise<null> {
+	async writeJsonAsXml(json: any, filePath: string): Promise<void> {
 		const builder = new xml2js.Builder({
 			renderOpts: {
 				pretty: true,
-				indent: "    "
-			}
+				indent: "    ",
+				newline: "\n",
+			},
 		});
-		const xml = builder.buildObject(json);
-		console.log(xml)
-		return Promise.resolve(null)
+		const xml = builder.buildObject(json) + "\n";
+		console.log(xml);
+		return fs.writeFile(filePath, xml);
 	}
 }

@@ -4,12 +4,17 @@ import { findFilesWithExtension } from "../utils/FilesFineder";
 import { XmlUtils } from "../utils/XmlUtils";
 
 export class LabelsParser {
-	xmlUtils = new XmlUtils()
+	xmlUtils = new XmlUtils();
 	async read(filePath: string): Promise<CustomLabel[]> {
-		return fs.readFile(filePath, "utf-8")
-			.then(xmlString => this.xmlUtils.convertXmlStringToJson(xmlString))
-			.then(rawLabels => {
-				return rawLabels.CustomLabels.labels?.map(rawLabel => this.convertRawToLabel(rawLabel));
+		return fs
+			.readFile(filePath, "utf-8")
+			.then((xmlString) =>
+				this.xmlUtils.convertXmlStringToJson(xmlString)
+			)
+			.then((rawLabels) => {
+				return rawLabels.CustomLabels.labels?.map((rawLabel) =>
+					this.convertRawToLabel(rawLabel)
+				);
 			});
 	}
 
@@ -18,9 +23,9 @@ export class LabelsParser {
 		const labels: CustomLabel[] = [];
 		for (const file of files) {
 			const labelsInFile = await this.read(file);
-			labels.push(...labelsInFile)
+			labels.push(...labelsInFile);
 		}
-		return Promise.resolve(labels)
+		return Promise.resolve(labels);
 	}
 
 	convertRawToLabel(rawLabel): CustomLabel {
@@ -29,7 +34,7 @@ export class LabelsParser {
 			language: rawLabel.language[0],
 			protected: rawLabel.protected[0],
 			shortDescription: rawLabel.shortDescription[0],
-			value: rawLabel.value[0]
+			value: rawLabel.value[0],
 		};
 	}
 }
