@@ -11,4 +11,4 @@ jobs:
       - name: Instal dependencies
         run: npm i
       - name: Run prettier
-        run: npx prettier -c .
+        run: npx prettier --list-different .
