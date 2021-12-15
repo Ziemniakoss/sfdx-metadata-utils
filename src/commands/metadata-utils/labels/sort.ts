@@ -1,7 +1,6 @@
-import { SfdxCommand, flags } from "@salesforce/command";
-import { AnyJson } from "@salesforce/ts-types";
-import { XmlUtils } from "../../../utils/XmlUtils";
-import { retrieveKeychain } from "@salesforce/core/lib/keyChain";
+import {SfdxCommand, flags} from "@salesforce/command";
+import {AnyJson} from "@salesforce/ts-types";
+import {XmlUtils} from "../../../utils/XmlUtils";
 
 export default class SortLabels extends SfdxCommand {
 	public static description = "Sort custom labels file";
@@ -15,7 +14,7 @@ export default class SortLabels extends SfdxCommand {
 	private xmlUtils = new XmlUtils();
 
 	public async run(): Promise<AnyJson> {
-		const { path } = this.flags;
+		const {path} = this.flags;
 		if (path) {
 			return this.sortFile(path);
 		} else {
