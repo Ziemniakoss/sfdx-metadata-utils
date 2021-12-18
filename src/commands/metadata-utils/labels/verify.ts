@@ -4,7 +4,6 @@ import {XmlUtils} from "../../../utils/XmlUtils";
 import {LabelsFilesFinder} from "../../../metadata-files-finders/LabelsFilesFinder";
 import {SfdxError} from "@salesforce/core";
 
-//TODO output format
 export default class VerifyLabels extends SfdxCommand {
 	public static description = "Check if custom labels file does not contain duplicates";
 
@@ -12,34 +11,33 @@ export default class VerifyLabels extends SfdxCommand {
 
 	public async run(): Promise<AnyJson> {
 		return this.verifyAllFiles();
-
 	}
 
 	async verifyAllFiles(): Promise<AnyJson> {
 		const files = await new LabelsFilesFinder().findFiles();
-		const labelsOccurancesMap = new Map<string, LabelOccurrence>();
+		const labelsOccurrencesMap = new Map<string, LabelOccurrence>();
 		for(const fileName of files) {
 			const dirtyLabelsXml = await this.xmlUtils.readXmlFromFile(fileName)
 				.then(xmlString => this.xmlUtils.convertXmlStringToJson(xmlString))
 			for(const label of dirtyLabelsXml.CustomLabels.labels ?? []) {
 				const labelFullName = label.fullName[0];
 
-				let labelOccurances = labelsOccurancesMap.get(labelFullName);
-				if(labelOccurances == null) {
-					labelOccurances = new LabelOccurrence(labelFullName);
-					labelsOccurancesMap.set(labelFullName, labelOccurances);
+				let labelOccurrences = labelsOccurrencesMap.get(labelFullName);
+				if(labelOccurrences == null) {
+					labelOccurrences = new LabelOccurrence(labelFullName);
+					labelsOccurrencesMap.set(labelFullName, labelOccurrences);
 				}
-				labelOccurances.addOccurrence(fileName)
+				labelOccurrences.addOccurrence(fileName)
 			}
 		}
 		const errors = [];
-		for(const labelOccurance of labelsOccurancesMap.values()) {
-			if(labelOccurance.totalOccurrences > 1) {
-				for(const fileWithLabel of labelOccurance.filesWithThisLabel) {
-					const message = `Duplicates of label ${labelOccurance.fullName} found in files: ${[...labelOccurance.filesWithThisLabel.values()].join(",")}`
+		for(const labelOccurrence of labelsOccurrencesMap.values()) {
+			if(labelOccurrence.totalOccurrences > 1) {
+				for(const fileWithLabel of labelOccurrence.filesWithThisLabel) {
+					const message = `Duplicates of label ${labelOccurrence.fullName} found in files: ${[...labelOccurrence.filesWithThisLabel.values()].join(",")}`
 					errors.push({
 						fileName: fileWithLabel,
-						label: labelOccurance.fullName,
+						label: labelOccurrence.fullName,
 						message
 					})
 					this.ux.error(message)
