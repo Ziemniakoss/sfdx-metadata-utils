@@ -48,8 +48,19 @@ export default class SortLabels extends SfdxCommand {
 				return rawCustomLabels;
 			})
 			.then((sortedRawCustomLabels) => {
+				sortedRawCustomLabels.CustomLabels.labels =
+					sortedRawCustomLabels.CustomLabels.labels.map((label) => ({
+						fullName: label.fullName[0],
+						language: label.language[0],
+						protected: label.protected[0],
+						shortDescription: label.shortDescription[0],
+						value: label.value[0],
+					}));
+				return sortedRawCustomLabels;
+			})
+			.then((rawLabelsWithSortedProperties) => {
 				return this.xmlUtils.writeJsonAsXml(
-					sortedRawCustomLabels,
+					rawLabelsWithSortedProperties,
 					filePath
 				);
 			})

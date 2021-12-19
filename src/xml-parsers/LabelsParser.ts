@@ -1,6 +1,6 @@
 import { CustomLabel } from "../metadata-types/CustomLabel";
 import { promises as fs } from "fs";
-import { findFilesWithExtension } from "../utils/FilesFineder";
+import { findFilesWithExtension } from "../utils/FilesFinder";
 import { XmlUtils } from "../utils/XmlUtils";
 
 export class LabelsParser {
