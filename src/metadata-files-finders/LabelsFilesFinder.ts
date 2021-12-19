@@ -1,8 +1,8 @@
 import { IMetadataFilesFinder } from "./IMetadataFilesFinder";
-import { findFilesWithExtension } from "../utils/FilesFineder";
+import { findFilesWithExtension } from "../utils/FilesFinder";
 
 export class LabelsFilesFinder implements IMetadataFilesFinder {
 	async findFiles(): Promise<string[]> {
-		return findFilesWithExtension(".labels.xml");
+		return findFilesWithExtension(".labels-meta.xml");
 	}
 }
