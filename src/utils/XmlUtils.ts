@@ -1,4 +1,4 @@
-import {promises as fs} from "fs";
+import { promises as fs } from "fs";
 
 const xml2js = require("xml2js");
 
