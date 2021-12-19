@@ -1,4 +1,4 @@
-import { SfdxCommand, flags } from "@salesforce/command";
+import { SfdxCommand } from "@salesforce/command";
 import { AnyJson } from "@salesforce/ts-types";
 import { XmlUtils } from "../../../utils/XmlUtils";
 import { LabelsFilesFinder } from "../../../metadata-files-finders/LabelsFilesFinder";

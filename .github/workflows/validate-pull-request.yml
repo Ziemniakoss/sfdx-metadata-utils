@@ -3,12 +3,25 @@ on: pull_request
 jobs:
   prettier-validation:
     runs-on: ubuntu-latest
+    name: Prettier validation
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v2
-      - name: Setup Node
+      - name: setup node
         uses: actions/setup-node@v2
-      - name: Instal dependencies
+      - name: instal dependencies
         run: npm i
       - name: Run prettier
         run: npx prettier --list-different .
+  typescript-validation:
+    runs-on: ubuntu-latest
+    name: Try to compile ts
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup node
+        uses: actions/setup-node@v2
+      - name: instal dependencies
+        run: npm i
+      - name: Run typescirpt compilation
+        run: tsc -p .
