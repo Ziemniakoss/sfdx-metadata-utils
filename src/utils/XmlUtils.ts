@@ -24,7 +24,6 @@ export class XmlUtils {
 			},
 		});
 		const xml = builder.buildObject(json) + "\n";
-		console.log(xml);
 		return fs.writeFile(filePath, xml);
 	}
 }
