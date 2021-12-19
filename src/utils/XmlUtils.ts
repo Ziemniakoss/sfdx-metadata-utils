@@ -4,7 +4,7 @@ const xml2js = require("xml2js");
 
 export class XmlUtils {
 	parser = new xml2js.Parser({
-		trim: true
+		trim: true,
 	});
 
 	async convertXmlStringToJson(xmlString: string): Promise<any> {

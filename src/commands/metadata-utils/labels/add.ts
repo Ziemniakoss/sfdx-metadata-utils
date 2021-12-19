@@ -1,9 +1,9 @@
-import {SfdxCommand, flags} from "@salesforce/command";
-import {AnyJson} from "@salesforce/ts-types";
-import {LabelsFilesFinder} from "../../../metadata-files-finders/LabelsFilesFinder";
-import {CustomLabel} from "../../../metadata-types/CustomLabel";
-import {XmlUtils} from "../../../utils/XmlUtils";
-import {exists} from "@oclif/config/lib/util";
+import { SfdxCommand, flags } from "@salesforce/command";
+import { AnyJson } from "@salesforce/ts-types";
+import { LabelsFilesFinder } from "../../../metadata-files-finders/LabelsFilesFinder";
+import { CustomLabel } from "../../../metadata-types/CustomLabel";
+import { XmlUtils } from "../../../utils/XmlUtils";
+import { exists } from "@oclif/config/lib/util";
 
 export default class AddLabel extends SfdxCommand {
 	public static flagsConfig = {
@@ -41,24 +41,27 @@ export default class AddLabel extends SfdxCommand {
 		const path = await this.getFileNameForLabel();
 		const label = await this.getNewLabelData();
 		const rawLabels = await this.readXmlLabelsFromFile(path);
-		rawLabels.CustomLabels.labels.push(label)
+		rawLabels.CustomLabels.labels.push(label);
 		await new XmlUtils().writeJsonAsXml(rawLabels, path);
-		this.ux.log("Added, you should run metadata-utils:labels:sort to sort labels")
+		this.ux.log(
+			"Added, you should run metadata-utils:labels:sort to sort labels"
+		);
 		return null;
 	}
 
 	private async readXmlLabelsFromFile(fileName): Promise<any> {
-		if(!await exists(fileName)) {
+		if (!(await exists(fileName))) {
 			return {
-				"$": {
-					xmlns:`http://soap.sforce.com/2006/04/metadata`
+				$: {
+					xmlns: `http://soap.sforce.com/2006/04/metadata`,
 				},
-				labels: []
-			}
+				labels: [],
+			};
 		}
 		const xmlUtils = new XmlUtils();
-		return xmlUtils.readXmlFromFile(fileName)
-			.then(xmlString => xmlUtils.convertXmlStringToJson(xmlString))
+		return xmlUtils
+			.readXmlFromFile(fileName)
+			.then((xmlString) => xmlUtils.convertXmlStringToJson(xmlString));
 	}
 
 	private async getNewFileName(): Promise<string> {
@@ -75,7 +78,7 @@ export default class AddLabel extends SfdxCommand {
 					return fileName;
 				}
 			} else {
-				return fileName
+				return fileName;
 			}
 		}
 	}
@@ -148,7 +151,7 @@ export default class AddLabel extends SfdxCommand {
 			});
 		}
 		if (value == null) {
-			value = await this.ux.prompt("Value", {required: true});
+			value = await this.ux.prompt("Value", { required: true });
 		}
 		if (isProtected == null) {
 			while (true) {
@@ -170,7 +173,7 @@ export default class AddLabel extends SfdxCommand {
 			});
 		}
 		if (language == null) {
-			language = await this.ux.prompt("Language", {default: "en_US"});
+			language = await this.ux.prompt("Language", { default: "en_US" });
 		}
 		return {
 			fullName,
