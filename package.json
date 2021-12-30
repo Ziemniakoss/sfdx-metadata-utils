@@ -9,6 +9,7 @@
 		"@oclif/errors": "^1",
 		"@salesforce/command": "^3",
 		"@salesforce/core": "^2",
+		"inquirer": "^8.2.0",
 		"tslib": "^2",
 		"xml2js": "^0.4.23"
 	},
@@ -58,8 +59,13 @@
 	"homepage": "https://github.com/Ziemniakoss/sfdx-metadata-utils",
 	"keywords": [
 		"sfdx-plugin",
-		"yaml",
-		"metadata"
+		"metadata",
+		"utils",
+		"sorting",
+		"labels",
+		"profiles",
+		"cli",
+		"apex-accesses"
 	],
 	"license": "WTFPL",
 	"oclif": {
