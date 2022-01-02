@@ -10,13 +10,4 @@ export default class ProfileFormatter implements  IMetadataFormatter<Profile> {
 	formatRawMetadata(rawMetadata: RawMetadata<Profile>) {
 		//TODO
 	}
-
-	private formatApexAccesses(rawMetadata: RawMetadata<Profile>) {
-
-	}
-
-	private formatApexAccesses(metadata: Profile) {
-		metadata.classAccesses.s
-
-	}
 }

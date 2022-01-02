@@ -1,5 +1,5 @@
 import {IMetadataFilesFinder} from "./IMetadataFilesFinder";
-import {findFilesWithExtension} from "../utils/FilesFinder";
+import {findFilesWithExtension} from "../utils/filesUtils";
 
 export class ProfilesFilesFinder implements IMetadataFilesFinder {
 	findFiles(): Promise<string[]> {
