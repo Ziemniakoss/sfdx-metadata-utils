@@ -30,7 +30,7 @@ export default class SortLabels extends SfdxCommand {
 		this.ux.log("Sorting " + filePath);
 
 		return this.xmlUtils
-			.readXmlFromFile(filePath)
+			.readXmlStringFromFile(filePath)
 			.then((xmlString) =>
 				this.xmlUtils.convertXmlStringToJson(xmlString)
 			)

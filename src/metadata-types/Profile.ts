@@ -8,6 +8,15 @@ export class Profile extends Metadata{
 	objectPermissions?: ProfileObjectPermissions[]
 }
 
+export class RawProfile {
+	Profile: {
+		classAccesses?: {
+			apexClass: [string],
+			enabled: ("true" | "false" | null)[]
+		}[]
+	}
+}
+
 class ProfileApexClassAccess {
 	apexClass: string
 	enabled: boolean
