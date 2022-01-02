@@ -7,16 +7,19 @@
  * @param asc should properties be sorted in ascending order
  * @returns copy with sorted properties or null if input was null
  */
-import {compare} from "./comparators";
+import { compare } from "./comparators";
 
-export function sortObjectPropertiesAlphabetically(obj?: any, asc: boolean = true): any {
-	if(obj == null) {
+export function sortObjectPropertiesAlphabetically(
+	obj?: any,
+	asc: boolean = true
+): any {
+	if (obj == null) {
 		return null;
 	}
- 	const properties = Object.keys(obj);
-	properties.sort((a, b) => compare(a, b, true, asc))
-	const sortedObject = {}
-	for(const prop of properties) {
+	const properties = Object.keys(obj);
+	properties.sort((a, b) => compare(a, b, true, asc));
+	const sortedObject = {};
+	for (const prop of properties) {
 		sortedObject[prop] = obj[prop];
 	}
 	return sortedObject;

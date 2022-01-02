@@ -16,8 +16,9 @@ export class XmlUtils {
 	}
 
 	async readXmlFromFile<T>(filePath: string): Promise<T> {
-		return this.readXmlStringFromFile(filePath)
-			.then(xmlString => this.convertXmlStringToJson(xmlString))
+		return this.readXmlStringFromFile(filePath).then((xmlString) =>
+			this.convertXmlStringToJson(xmlString)
+		);
 	}
 
 	async writeJsonAsXml(json: any, filePath: string): Promise<void> {

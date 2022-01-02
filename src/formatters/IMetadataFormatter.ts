@@ -1,7 +1,7 @@
-import {Metadata, RawMetadata} from "../metadata-types/Metadata";
+import { Metadata } from "../metadata-types/Metadata";
 
-export default interface IMetadataFormatter<T extends Metadata> {
-	formatMetadata(metadata: T)
+export default interface IMetadataFormatter<T extends Metadata, RawVersion> {
+	formatMetadata(metadata: T);
 
-	formatRawMetadata(rawMetadata: RawMetadata<T>)
+	formatRawMetadata(rawMetadata: RawVersion);
 }

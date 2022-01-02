@@ -1,8 +1,8 @@
 import { SfdxCommand, flags } from "@salesforce/command";
 import { AnyJson } from "@salesforce/ts-types";
 import { XmlUtils } from "../../../utils/XmlUtils";
-import {compareByField} from "../../../utils/comparators";
-import {sortObjectPropertiesAlphabetically} from "../../../utils/objectSorters";
+import { compareByField } from "../../../utils/comparators";
+import { sortObjectPropertiesAlphabetically } from "../../../utils/objectSorters";
 
 export default class SortLabels extends SfdxCommand {
 	public static description = "Sort custom labels file";
@@ -35,13 +35,15 @@ export default class SortLabels extends SfdxCommand {
 				this.xmlUtils.convertXmlStringToJson(xmlString)
 			)
 			.then((rawCustomLabels) => {
-					rawCustomLabels.CustomLabels.labels.sort((a, b) => compareByField(a, b, "fullName"));
+				rawCustomLabels.CustomLabels.labels.sort((a, b) =>
+					compareByField(a, b, "fullName")
+				);
 				return rawCustomLabels;
 			})
 			.then((sortedRawCustomLabels) => {
 				sortedRawCustomLabels.CustomLabels.labels =
 					sortedRawCustomLabels.CustomLabels.labels.map((label) => {
-						return sortObjectPropertiesAlphabetically(label)
+						return sortObjectPropertiesAlphabetically(label);
 					});
 				return sortedRawCustomLabels;
 			})

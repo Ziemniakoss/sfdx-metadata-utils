@@ -5,4 +5,4 @@ export abstract class Metadata {
 /**
  * Useful for extraction from xml
  */
-export type RawMetadata<T extends Metadata> = Record<keyof T, []>
+export type RawMetadata<T extends Metadata> = Record<keyof T, []>;
