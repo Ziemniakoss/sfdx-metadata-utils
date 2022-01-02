@@ -16,7 +16,6 @@ export default class SetApexClassAccess extends SfdxCommand {
 		const profilePath = await promptForProfileFile();
 		const apexClass = await promptForApexClassName();
 		const access = await this.promptForAccessLevel();
-		console.log(profilePath, apexClass, access);
 
 		const xmlUtils = new XmlUtils();
 		const rawProfile = await xmlUtils.readXmlFromFile<RawProfile>(
@@ -26,7 +25,9 @@ export default class SetApexClassAccess extends SfdxCommand {
 
 		const formatter = new ProfileFormatter();
 		formatter.formatRawMetadata(rawProfile);
-		return "";
+
+		await xmlUtils.writeJsonAsXml(rawProfile, profilePath);
+		return 0;
 	}
 
 	private setAccess(
