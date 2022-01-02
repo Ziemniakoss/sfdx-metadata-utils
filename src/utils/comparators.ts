@@ -10,7 +10,7 @@
  * @param caseInsensitive should comparison be insensitive
  * @param asc should values be sorted in ascending order
  */
-export function compareByField(a: any, b: any, fieldName: string, caseInsensitive: boolean = true, asc: boolean = true) :number{
+export function compareByField(a, b, fieldName: string, caseInsensitive= true, asc = true) :number{
 	let valueInA =	a[fieldName];
 	let valueInB = b[fieldName];
 	if(Array.isArray(valueInA)) {
@@ -19,19 +19,19 @@ export function compareByField(a: any, b: any, fieldName: string, caseInsensitiv
 	if(Array.isArray(valueInB)) {
 		valueInB = valueInB[0];
 	}
-	if(caseInsensitive) {
-		valueInA = valueInA?.toLowerCase()
-		valueInB = valueInB?.toLowerCase()
-	}
-	if(valueInB == valueInA) {
-		return  0;
-	}
 	return compare(valueInA, valueInB, caseInsensitive, asc);
 }
 
-export function compare(a: string, b: string, caseInsensitive: boolean = true, asc: boolean = true) : number {
-	const orderModifier = asc ? 1 : -1
-	let comparationResult = 0;
+export function compare(a: string, b: string, caseInsensitive= true, asc = true) : number {
+	const orderModifier = asc ? 1 : -1;
+	if(caseInsensitive) {
+		a = a?.toLowerCase();
+		b = b?.toLowerCase();
+	}
+	if(a == b) {
+		return  0;
+	}
+	let comparationResult;
 	if(a > b) {
 		comparationResult = 1;
 	} else {
