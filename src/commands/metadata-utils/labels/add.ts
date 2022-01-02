@@ -60,7 +60,7 @@ export default class AddLabel extends SfdxCommand {
 		}
 		const xmlUtils = new XmlUtils();
 		return xmlUtils
-			.readXmlFromFile(fileName)
+			.readXmlStringFromFile(fileName)
 			.then((xmlString) => xmlUtils.convertXmlStringToJson(xmlString));
 	}
 

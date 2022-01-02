@@ -11,8 +11,14 @@ export class XmlUtils {
 		return this.parser.parseStringPromise(xmlString);
 	}
 
-	async readXmlFromFile(filePath: string): Promise<string> {
+	async readXmlStringFromFile(filePath: string): Promise<string> {
 		return fs.readFile(filePath, "utf-8");
+	}
+
+	async readXmlFromFile<T>(filePath: string): Promise<T> {
+		return this.readXmlStringFromFile(filePath).then((xmlString) =>
+			this.convertXmlStringToJson(xmlString)
+		);
 	}
 
 	async writeJsonAsXml(json: any, filePath: string): Promise<void> {

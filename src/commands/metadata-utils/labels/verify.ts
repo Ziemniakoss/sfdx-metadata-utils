@@ -19,7 +19,7 @@ export default class VerifyLabels extends SfdxCommand {
 		const labelsOccurrencesMap = new Map<string, LabelOccurrence>();
 		for (const fileName of files) {
 			const dirtyLabelsXml = await this.xmlUtils
-				.readXmlFromFile(fileName)
+				.readXmlStringFromFile(fileName)
 				.then((xmlString) =>
 					this.xmlUtils.convertXmlStringToJson(xmlString)
 				);

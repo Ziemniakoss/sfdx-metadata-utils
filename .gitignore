@@ -1,3 +1,4 @@
+dummy-files/*
 *-debug.log
 *-error.log
 /.nyc_output
