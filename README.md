@@ -9,3 +9,11 @@ It allows for sorting and basic validation of supported metadata files.
 
 -   listing labels
 -   sorting labels by fullName
+-   adding label with cli
+
+### Profiles
+
+#### Apex classes access
+
+-   checking access to class
+-   setting access to class
