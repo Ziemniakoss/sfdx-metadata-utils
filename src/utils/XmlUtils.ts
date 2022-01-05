@@ -29,7 +29,11 @@ export class XmlUtils {
 				newline: "\n",
 			},
 		});
-		const xml = builder.buildObject(json) + "\n";
+		let xml = builder.buildObject(json);
+		// xml-js does not allow to specify if we want standalone in xml definition
+		const splitedXml = xml.split("\n");
+		splitedXml[0] = `<?xml version="1.0" encoding="UTF-8" ?>`;
+		xml = splitedXml.join("\n") + "\n";
 		return fs.writeFile(filePath, xml);
 	}
 }
