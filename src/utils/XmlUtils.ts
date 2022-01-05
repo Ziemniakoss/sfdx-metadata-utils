@@ -32,8 +32,8 @@ export class XmlUtils {
 		let xml = builder.buildObject(json);
 		// xml-js does not allow to specify if we want standalone in xml definition
 		const splitedXml = xml.split("\n");
-		splitedXml[0] = `<?xml version="1.0" encoding="UTF-8" ?>`
-		xml = splitedXml.join("\n") + "\n"
+		splitedXml[0] = `<?xml version="1.0" encoding="UTF-8" ?>`;
+		xml = splitedXml.join("\n") + "\n";
 		return fs.writeFile(filePath, xml);
 	}
 }
