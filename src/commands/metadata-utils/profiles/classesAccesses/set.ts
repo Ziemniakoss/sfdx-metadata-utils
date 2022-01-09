@@ -18,7 +18,7 @@ const messages = Messages.loadMessages(
 );
 
 //@ts-ignore
-class SetApexClassAccess extends SfdxCommand {
+export class SetApexClassAccess extends SfdxCommand {
 	public static description = messages.getMessage("description");
 	public static flagsConfig = {
 		profile: flags.string({
