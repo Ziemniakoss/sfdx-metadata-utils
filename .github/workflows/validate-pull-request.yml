@@ -1,5 +1,9 @@
-name: "Validate pull request"
-on: pull_request
+name: "Static analysis and testing"
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 jobs:
   prettier-validation:
     runs-on: ubuntu-latest
