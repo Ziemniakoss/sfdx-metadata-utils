@@ -1,10 +1,11 @@
 import { equal } from "assert";
+import * as path from "path";
 import {
 	extractFileName,
 	findFilesWithExtension,
-} from "../../lib/utils/filesUtils";
-import * as path from "path";
+} from "../../src/utils/filesUtils";
 
+const basePath = path.join(".", "test", "resources");
 describe("filesUtils#extractFileName", () => {
 	context("File with extension", () => {
 		it(`Should return "testFile"`, () => {
@@ -29,22 +30,23 @@ describe("filesUtils#extractFileName", () => {
 		});
 	});
 });
-
 describe("filesUtils#findFilesWithExtension", () => {
 	context("Files with extension exits", () => {
 		it("should return 0", () => {
-			return findFilesWithExtension("not-existing-extension").then(
-				(filesFound) => {
-					equal(filesFound.length, 0);
-				}
-			);
+			return findFilesWithExtension(
+				"not-existing-extension",
+				basePath
+			).then((filesFound) => {
+				equal(filesFound.length, 0);
+			});
 		});
 	});
+
 	context("Files with extension dont exist", () => {
 		it("should return 4", () => {
-			return findFilesWithExtension("existing-extension.xml").then(
+			return findFilesWithExtension("cls", basePath).then(
 				(filesFound) => {
-					equal(filesFound.length, 4);
+					equal(filesFound.length, 2);
 				}
 			);
 		});

@@ -1,0 +1,5 @@
+{
+	"description": "Set access to class",
+	"flag:profile:description": "Profile name",
+	"flag:class:description": "Apex class name"
+}

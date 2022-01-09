@@ -1,19 +1,39 @@
 import { SfdxCommand } from "@salesforce/command";
+import { Messages } from "@salesforce/core";
 import { XmlUtils } from "../../../../utils/XmlUtils";
 import { RawProfile } from "../../../../metadata-types/Profile";
 import {
 	promptForApexClassName,
 	promptForProfileFile,
 } from "../../../../utils/prompts";
+import { flags } from "@oclif/command";
 
-export default class SetApexClassAccess extends SfdxCommand {
-	public static description = "Show current access to class for this profile";
+Messages.importMessagesDirectory(__dirname);
+const messages = Messages.loadMessages(
+	"sfdx-metadata-utils",
+	"profiles_classesAccesses_check"
+);
+
+//@ts-ignore
+export default class CheckApexClassAccess extends SfdxCommand {
+	public static description = messages.getMessage("description"); //"Show current access to class for this profile";
+
+	public static flagsConfig = {
+		profile: flags.string({
+			char: "p",
+			description: messages.getMessage("flag:profile:description"),
+		}),
+		class: flags.string({
+			description: messages.getMessage("flag:class:description"),
+			char: "c",
+		}),
+	};
 
 	public async run(): Promise<
 		"granted" | "denied" | "not defined" | "unknown"
 	> {
-		const profilePath = await promptForProfileFile();
-		const className = await promptForApexClassName();
+		const profilePath = await promptForProfileFile(this.flags.profile);
+		const className = await this.getClassName();
 
 		const xmlUtils = new XmlUtils();
 		const rawProfile = await xmlUtils.readXmlFromFile<RawProfile>(
@@ -37,5 +57,12 @@ export default class SetApexClassAccess extends SfdxCommand {
 			this.ux.error(`Unknown value in enabled field: ${access}`);
 			return "unknown";
 		}
+	}
+
+	private async getClassName(): Promise<string> {
+		if (this.flags.class != null) {
+			return this.flags.class;
+		}
+		return promptForApexClassName();
 	}
 }
