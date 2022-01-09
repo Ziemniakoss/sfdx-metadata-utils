@@ -1,7 +1,14 @@
-import {extractFileName, findFilesWithExtension, findFilesWithName} from "./filesUtils";
-import {prompt} from "inquirer";
-import {ProfilesFilesFinder} from "../metadata-files-finders/ProfilesFilesFinder";
-import {SfdxError} from "@salesforce/core";
+import {
+	extractFileName,
+	findFilesWithExtension,
+	findFilesWithName,
+} from "./filesUtils";
+import { prompt } from "inquirer";
+import { ProfilesFilesFinder } from "../metadata-files-finders/ProfilesFilesFinder";
+import { Messages, SfdxError } from "@salesforce/core";
+
+Messages.importMessagesDirectory(__dirname);
+const messages = Messages.loadMessages("sfdx-metadata-utils", "prompts");
 
 export async function promptForApexClassName(): Promise<string> {
 	const choices = await findFilesWithExtension("cls").then((apexFiles) => {
@@ -22,17 +29,27 @@ export async function promptForApexClassName(): Promise<string> {
 	return selectedApexClass.class;
 }
 
-export async function promptForProfileFile(preselected: string, errorMessages: { fileDoesNotExist: string, multipleFiles: string }): Promise<string> {
+export async function promptForProfileFile(
+	preselected: string
+): Promise<string> {
 	if (preselected != null) {
-		const fileForProfile = await findFilesWithName(preselected, "profile-meta.xml")
+		const fileForProfile = await findFilesWithName(
+			preselected,
+			"profile-meta.xml"
+		);
 		if (fileForProfile.length == 0) {
 			throw new SfdxError(
-				errorMessages.fileDoesNotExist,
+				messages.getMessage("profileFile:doesntExist"),
 				null,
-				["create profile", "fetch profile"]
-			)
+				[
+					messages.getMessage("profileFile:createProfile"),
+					messages.getMessage("profileFile:fetchFromOrg"),
+				]
+			);
 		} else if (fileForProfile.length != 1) {
-			throw new SfdxError(errorMessages.multipleFiles)
+			throw new SfdxError(
+				messages.getMessage("profileFile:multipleFiles")
+			);
 		}
 		return fileForProfile[0];
 	}

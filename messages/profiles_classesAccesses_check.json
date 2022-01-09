@@ -1,7 +1,5 @@
 {
 	"description": "Set access to class",
 	"flag:profile:description": "Profile name",
-	"flag:class:description": "Apex class name",
-	"error:profile:doesntExist": "Local file for this profile name does not exist, consider creating it or fetching from org",
-	"error:profile:multipleFiles": "Multiple files for this profile found!"
+	"flag:class:description": "Apex class name"
 }
