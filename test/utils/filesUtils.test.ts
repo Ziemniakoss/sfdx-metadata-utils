@@ -1,6 +1,9 @@
 import { equal } from "assert";
 import * as path from "path";
-import {extractFileName, findFilesWithExtension} from "../../src/utils/filesUtils";
+import {
+	extractFileName,
+	findFilesWithExtension,
+} from "../../src/utils/filesUtils";
 
 describe("filesUtils#extractFileName", () => {
 	context("File with extension", () => {
