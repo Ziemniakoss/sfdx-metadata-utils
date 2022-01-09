@@ -13,7 +13,7 @@ jobs:
         run: npm i
       - name: Run prettier
         run: npx prettier --list-different .
-  typescript-validation:
+  code-compilation:
     runs-on: ubuntu-latest
     name: Try to compile ts
     steps:
@@ -24,12 +24,12 @@ jobs:
       - name: instal dependencies
         run: npm i
       - name: Run typescirpt compilation
-        run: tsc -p .
+        run: npm run prepack
   run-tests-on-linux:
     runs-on: ubuntu-latest
     name: Run tests on linux
     needs:
-      - typescript-validation
+      - code-compilation
       - prettier-validation
     steps:
       - name: checkout
@@ -44,7 +44,7 @@ jobs:
     runs-on: macos-latest
     name: Run tests on macos
     needs:
-      - typescript-validation
+      - code-compilation
       - prettier-validation
     steps:
       - name: checkout
@@ -59,7 +59,7 @@ jobs:
     runs-on: windows-latest
     name: Run tests on windows
     needs:
-      - typescript-validation
+      - code-compilation
       - prettier-validation
     steps:
       - name: checkout
