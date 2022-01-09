@@ -1,5 +1,5 @@
 import { sep } from "path";
-import { promiseFiles} from "node-dir"
+import { promiseFiles } from "node-dir";
 
 /**
  * Find all files in directory and its subdirectories with given extension
@@ -14,15 +14,21 @@ export async function findFilesWithExtension(
 	if (basePath == null) {
 		basePath = ".";
 	}
-	return promiseFiles(basePath)
-		.then(foundAllFiles => foundAllFiles.filter(file => hasExtension(file, extension)))
+	return promiseFiles(basePath).then((foundAllFiles) =>
+		foundAllFiles.filter((file) => hasExtension(file, extension))
+	);
 }
 
-export async function findFilesWithName(fileName:string, extensionName:string,basePath = "."):Promise<string[]> {
-	return promiseFiles(basePath)
-		.then(allFiles => allFiles.filter(foundFile => {
-			return extractFileName(foundFile,extensionName) ==fileName
-		}))
+export async function findFilesWithName(
+	fileName: string,
+	extensionName: string,
+	basePath = "."
+): Promise<string[]> {
+	return promiseFiles(basePath).then((allFiles) =>
+		allFiles.filter((foundFile) => {
+			return extractFileName(foundFile, extensionName) == fileName;
+		})
+	);
 }
 /**
  * Check if file has given extension.
@@ -30,8 +36,8 @@ export async function findFilesWithName(fileName:string, extensionName:string,ba
  * @param path
  * @param extensionName
  */
-export function hasExtension(path:string, extensionName:string) :boolean{
-	return path.endsWith(extensionName)
+export function hasExtension(path: string, extensionName: string): boolean {
+	return path.endsWith(extensionName);
 }
 
 /**
