@@ -1,5 +1,5 @@
-import { compare, compareByField } from "../../lib/utils/comparators";
 import { equal } from "assert";
+import {compare, compareByField} from "../../src/utils/comparators";
 
 function testCompare(
 	a: string,
