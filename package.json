@@ -23,7 +23,6 @@
 		"@salesforce/prettier-config": "^0",
 		"@salesforce/ts-sinon": "^1",
 		"@types/chai": "^4",
-		"@types/jsforce": "^1.9.29",
 		"@types/mocha": "^8",
 		"@typescript-eslint/eslint-plugin": "^5.8.1",
 		"@typescript-eslint/parser": "^5.8.1",
@@ -43,8 +42,6 @@
 		"mocha": "^8",
 		"nyc": "^15",
 		"prettier": "^2",
-		"pretty-quick": "^3",
-		"sinon": "10.0.0",
 		"ts-node": "^10",
 		"typescript": "4"
 	},
