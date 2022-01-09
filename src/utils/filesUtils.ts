@@ -11,9 +11,6 @@ export async function findFilesWithExtension(
 	extension: string,
 	basePath = "."
 ): Promise<string[]> {
-	if (basePath == null) {
-		basePath = ".";
-	}
 	return promiseFiles(basePath).then((foundAllFiles) =>
 		foundAllFiles.filter((file) => hasExtension(file, extension))
 	);
