@@ -8,10 +8,24 @@ import {
 import { XmlUtils } from "../../../../utils/XmlUtils";
 import { RawProfile } from "../../../../metadata-types/Profile";
 import ProfileFormatter from "../../../../formatters/ProfileFormatter";
+import {Messages} from "@salesforce/core";
+import {flags} from "@oclif/command";
+
+Messages.importMessagesDirectory(__dirname);
+const messages = Messages.loadMessages('sfdx-metadata-utils', 'profiles_classesAccesses_set');
 
 export default class SetApexClassAccess extends SfdxCommand {
-	public static description = "Set access to apex class for this profile";
-
+	public static description = messages.getMessage("description")
+	public static flagsConfig = {
+		"profile": flags.string({
+			description: messages.getMessage("flag:profile:description"),
+			char: "p"
+		}),
+		class: flags.string({
+			description: messages.getMessage("flag:class:description"),
+			char: "c"
+		})
+	}
 	public async run(): Promise<AnyJson> {
 		const profilePath = await promptForProfileFile();
 		const apexClass = await promptForApexClassName();
