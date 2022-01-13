@@ -43,7 +43,7 @@ describe("filesUtils#findFilesWithExtension", () => {
 	});
 
 	context("Files with extension dont exist", () => {
-		it("should return 4", () => {
+		it("should return 2", () => {
 			return findFilesWithExtension("cls", basePath).then(
 				(filesFound) => {
 					equal(filesFound.length, 2);
