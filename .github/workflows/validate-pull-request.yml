@@ -14,7 +14,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v2
       - name: instal dependencies
-        run: npm i
+        run: npm ci
       - name: Run prettier
         run: npx prettier --list-different .
   code-compilation:
@@ -26,7 +26,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v2
       - name: instal dependencies
-        run: npm i
+        run: npm ci
       - name: Run typescirpt compilation
         run: npm run prepack
   run-tests-on-linux:
@@ -41,7 +41,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v2
       - name: instal dependencies
-        run: npm i
+        run: npm ci
       - name: Run tests
         run: npm test
   run-tests-on-mac:
@@ -56,7 +56,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v2
       - name: instal dependencies
-        run: npm i
+        run: npm ci
       - name: Run tests
         run: npm test
   run-tests-on-windows:
@@ -71,6 +71,6 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v2
       - name: instal dependencies
-        run: npm i
+        run: npm ci
       - name: Run tests
         run: npm test
