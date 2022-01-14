@@ -5,4 +5,4 @@ jobs:
     name: "Release | Minor"
     uses: Ziemniakoss/sfdx-metadata-utils/.github/workflows/create-release.yml@master
     with:
-      version_type: minor
+      release_type: minor

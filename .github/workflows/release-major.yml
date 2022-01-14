@@ -5,4 +5,4 @@ jobs:
     name: "Release | Major"
     uses: Ziemniakoss/sfdx-metadata-utils/.github/workflows/create-release.yml@master
     with:
-      version_type: major
+      release_type: major
