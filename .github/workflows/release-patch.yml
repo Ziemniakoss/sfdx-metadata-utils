@@ -1,0 +1,8 @@
+name: Release | Patch
+on: workflow_dispatch
+jobs:
+  release_minor:
+    name: "Release | Patch"
+    uses: Ziemniakoss/sfdx-metadata-utils/.github/workflows/create-release.yml@master
+    with:
+      release_type: patch

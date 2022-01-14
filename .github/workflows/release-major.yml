@@ -1,0 +1,8 @@
+name: Release | Major
+on: workflow_dispatch
+jobs:
+  release_major:
+    name: "Release | Major"
+    uses: Ziemniakoss/sfdx-metadata-utils/.github/workflows/create-release.yml@master
+    with:
+      release_type: major
