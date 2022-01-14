@@ -1,11 +1,11 @@
 name: Create release
 on:
   workflow_call:
-     inputs:
-       release_type:
-         description: "Release type (major|minor|patch)"
-         required: true
-         type: string
+    inputs:
+      release_type:
+        description: "Release type (major|minor|patch)"
+        required: true
+        type: string
 jobs:
   create-release:
     name: Create release
