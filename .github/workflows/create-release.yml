@@ -1,0 +1,30 @@
+name: Create release
+on:
+  workflow_call:
+     inputs:
+       release_type:
+         description: "Release type (major|minor|patch)"
+         required: true
+         type: string
+jobs:
+  create-release:
+    name: Create release
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: git config --global user.name 'Ziemniakoss' && git config --global user.email 'Ziemniakoss@users.noreply.github.com'
+      - name: Bump version
+        run: npm version ${{ inputs.version_type }}
+      - name: Update git repo
+        run: git push --follow-tags origin HEAD
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+          registry-url: "https://registry.npmjs.org"
+      - name: Install dependencies and build
+        run: npm install && npm run build
+      - name: Publish package on NPM 📦
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
