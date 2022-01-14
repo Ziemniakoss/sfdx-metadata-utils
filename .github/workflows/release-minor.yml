@@ -8,8 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git config --global user.name 'Ziemniakoss' && git config --global user.email 'Ziemniakoss@users.noreply.github.com'
-      - name: Bump version
-        run: npm version minor
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -17,6 +15,8 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Install dependencies and build
         run: npm install && npm run build
+      - name: Bump version
+        run: npm version minor
       - name: Publish package on NPM 📦
         run: npm publish
         env:
