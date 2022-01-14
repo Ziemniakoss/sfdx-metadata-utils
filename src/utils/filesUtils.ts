@@ -12,7 +12,9 @@ export async function findFilesWithExtension(
 	basePath = "."
 ): Promise<string[]> {
 	return promiseFiles(basePath).then((foundAllFiles) =>
-		foundAllFiles.filter((file) => hasExtension(file, extension))
+		foundAllFiles.filter(
+			(file) => hasExtension(file, extension) && !isHiddenFile(file)
+		)
 	);
 }
 
@@ -23,10 +25,24 @@ export async function findFilesWithName(
 ): Promise<string[]> {
 	return promiseFiles(basePath).then((allFiles) =>
 		allFiles.filter((foundFile) => {
-			return extractFileName(foundFile, extensionName) == fileName;
+			return (
+				extractFileName(foundFile, extensionName) == fileName &&
+				!isHiddenFile(foundFile)
+			);
 		})
 	);
 }
+
+export function isHiddenFile(path: string): boolean {
+	const splittedPath = path.split(sep);
+	for (const element of splittedPath) {
+		if (element.startsWith(".")) {
+			return true;
+		}
+	}
+	return false;
+}
+
 /**
  * Check if file has given extension.
  * Multipart extensions are accepted (for example "profile-meta.xml")
