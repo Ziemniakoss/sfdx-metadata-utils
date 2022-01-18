@@ -1,7 +1,7 @@
-import { Metadata } from "../metadata-types/Metadata";
-
-export default interface IMetadataFormatter<T extends Metadata, RawVersion> {
+/**
+ * Format metadata.
+ * This means grouping elements with same type.
+ */
+export default interface IMetadataFormatter<T> {
 	formatMetadata(metadata: T);
-
-	formatRawMetadata(rawMetadata: RawVersion);
 }

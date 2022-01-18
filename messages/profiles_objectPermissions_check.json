@@ -1,0 +1,5 @@
+{
+	"description": "Check sObject access for this profile",
+	"flag:profile:description": "Profile name",
+	"flag:sobject:description": "SObject name"
+}

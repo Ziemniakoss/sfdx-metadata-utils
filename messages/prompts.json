@@ -2,5 +2,6 @@
 	"profileFile:doesntExist": "Local file for this profile name does not exist",
 	"profileFile:multipleFiles": "Multiple files for this profile found!",
 	"profileFile:createProfile": "Create profile file",
-	"profileFile:fetchFromOrg": "Fetch profile file from org"
+	"profileFile:fetchFromOrg": "Fetch profile file from org",
+	"sObjectName:prompt": "SObject name"
 }

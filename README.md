@@ -1,7 +1,8 @@
-# Utils for metadata manipulation
+# Unofficial utilities for metadata manipulation
 
-This plugins helps with metadata management.
-It allows for sorting and basic validation of supported metadata files.
+This plugin helps with metadata management.
+It allows for basic formatting and modifing of metadata files.
+It works in fully offline mode, so any changes made by this plugin have to be deployed manually.
 
 ## Supported metadata files
 
@@ -17,3 +18,7 @@ It allows for sorting and basic validation of supported metadata files.
 
 -   checking access to class
 -   setting access to class
+
+#### SObject accesses
+
+-   check sObject access

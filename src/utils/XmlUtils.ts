@@ -1,9 +1,16 @@
 import { promises as fs } from "fs";
 
-const xml2js = require("xml2js");
+import { Parser, Builder } from "xml2js";
+
+/**
+ * Boolean from parsed xml.
+ *
+ * Why? Because xml2Js does not parse boolean values to boolean type.
+ */
+export type XmlBoolean = "true" | "false" | boolean;
 
 export class XmlUtils {
-	parser = new xml2js.Parser({
+	parser = new Parser({
 		trim: true,
 	});
 
@@ -22,7 +29,7 @@ export class XmlUtils {
 	}
 
 	async writeJsonAsXml(json: any, filePath: string): Promise<void> {
-		const builder = new xml2js.Builder({
+		const builder = new Builder({
 			renderOpts: {
 				pretty: true,
 				indent: "    ",

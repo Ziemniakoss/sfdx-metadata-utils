@@ -1,12 +1,12 @@
 import { SfdxCommand } from "@salesforce/command";
 import { Messages } from "@salesforce/core";
 import { XmlUtils } from "../../../../utils/XmlUtils";
-import { RawProfile } from "../../../../metadata-types/Profile";
 import {
 	promptForApexClassName,
 	promptForProfileFile,
 } from "../../../../utils/prompts";
 import { flags } from "@oclif/command";
+import { Profile } from "../../../../metadata-types/Profile";
 
 Messages.importMessagesDirectory(__dirname);
 const messages = Messages.loadMessages(
@@ -36,9 +36,7 @@ export default class CheckApexClassAccess extends SfdxCommand {
 		const className = await this.getClassName();
 
 		const xmlUtils = new XmlUtils();
-		const rawProfile = await xmlUtils.readXmlFromFile<RawProfile>(
-			profilePath
-		);
+		const rawProfile = await xmlUtils.readXmlFromFile<Profile>(profilePath);
 		const currentAccessForClass = rawProfile.Profile?.classAccesses?.find(
 			(classAccess) => classAccess.apexClass[0] == className
 		);

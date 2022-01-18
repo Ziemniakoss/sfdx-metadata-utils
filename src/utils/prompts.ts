@@ -6,6 +6,8 @@ import {
 import { prompt } from "inquirer";
 import { ProfilesFilesFinder } from "../metadata-files-finders/ProfilesFilesFinder";
 import { Messages, SfdxError } from "@salesforce/core";
+import { CustomObjectFilesFinder } from "../metadata-files-finders/CustomObjectFilesFinder";
+import { FILE_EXTENSION as SOBJECT_FILE_EXTENSION } from "../metadata-types/CustomObject";
 
 Messages.importMessagesDirectory(__dirname);
 const messages = Messages.loadMessages("sfdx-metadata-utils", "prompts");
@@ -27,6 +29,22 @@ export async function promptForApexClassName(): Promise<string> {
 		},
 	]);
 	return selectedApexClass.class;
+}
+
+export async function promptForSObjectName(): Promise<string> {
+	const sObjectChoices = await new CustomObjectFilesFinder()
+		.findFiles()
+		.then((files) =>
+			files.map((file) => extractFileName(file, SOBJECT_FILE_EXTENSION))
+		);
+	const selectedSObject = await prompt([
+		{
+			type: "list",
+			name: "sObject",
+			choices: sObjectChoices,
+		},
+	]);
+	return selectedSObject.sObject;
 }
 
 export async function promptForProfileFile(
