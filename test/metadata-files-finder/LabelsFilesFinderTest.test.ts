@@ -1,5 +1,5 @@
 import { equal } from "assert";
-import {LabelsFilesFinder} from "../../src/metadata-files-finders/LabelsFilesFinder";
+import { LabelsFilesFinder } from "../../src/metadata-files-finders/LabelsFilesFinder";
 
 describe("LabelsFilesFinder", () => {
 	it("should return 1", () => {
