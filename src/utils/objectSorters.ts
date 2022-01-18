@@ -9,10 +9,7 @@
  */
 import { compare } from "./comparators";
 
-export function sortObjectPropertiesAlphabetically(
-	obj?: any,
-	asc: boolean = true
-): any {
+export function sortObjectPropertiesAlphabetically(obj?: any, asc = true): any {
 	if (obj == null) {
 		return null;
 	}

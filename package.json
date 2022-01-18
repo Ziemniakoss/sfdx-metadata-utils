@@ -70,6 +70,9 @@
 		"commands": "./lib/commands",
 		"bin": "sfdx",
 		"topics": {
+			"metadata-utils": {
+				"description": "Unofficial utilities for metadata management"
+			},
 			"metadata-utils:labels": {
 				"description": "Manage labels"
 			},
@@ -78,6 +81,12 @@
 			},
 			"metadata-utils:supported": {
 				"description": "Get info about supported metadata files"
+			},
+			"metadata-utils:profiles:objectPermissions": {
+				"description": "Manage object permissions for profile"
+			},
+			"metadata-utils:profiles:classesAccesses": {
+				"description": "Manage apex classes permissions for profile"
 			}
 		},
 		"devPlugins": [

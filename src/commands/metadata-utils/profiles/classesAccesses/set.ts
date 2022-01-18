@@ -6,7 +6,7 @@ import {
 	promptForProfileFile,
 } from "../../../../utils/prompts";
 import { XmlUtils } from "../../../../utils/XmlUtils";
-import { RawProfile } from "../../../../metadata-types/Profile";
+import { Profile } from "../../../../metadata-types/Profile";
 import ProfileFormatter from "../../../../formatters/ProfileFormatter";
 import { Messages } from "@salesforce/core";
 import { flags } from "@oclif/command";
@@ -36,20 +36,18 @@ export class SetApexClassAccess extends SfdxCommand {
 		const access = await this.promptForAccessLevel();
 
 		const xmlUtils = new XmlUtils();
-		const rawProfile = await xmlUtils.readXmlFromFile<RawProfile>(
-			profilePath
-		);
-		this.setAccess(rawProfile, apexClass, access);
+		const xmlProfile = await xmlUtils.readXmlFromFile<Profile>(profilePath);
+		this.setAccess(xmlProfile, apexClass, access);
 
 		const formatter = new ProfileFormatter();
-		formatter.formatRawMetadata(rawProfile);
+		formatter.formatMetadata(xmlProfile);
 
-		await xmlUtils.writeJsonAsXml(rawProfile, profilePath);
+		await xmlUtils.writeJsonAsXml(xmlProfile, profilePath);
 		return 0;
 	}
 
 	private setAccess(
-		rawProfile: RawProfile,
+		rawProfile: Profile,
 		apexClass: string,
 		enabled: boolean
 	) {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MainAsset__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Bardzo ważny asset dla tego konta</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Jak w opisie</inlineHelpText>
+    <label>MainAsset</label>
+    <referenceTo>Asset</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Lookup</type>
+</CustomField>

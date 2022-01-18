@@ -15,7 +15,10 @@
     </classAccesses>
     <custom>true</custom>
     <objectPermissions>
-        <object>TestWeblinks__c</object>
+		<allowCreate>true</allowCreate>
+		<allowDelete>true</allowDelete>
+		<allowEdit>true</allowEdit>
+        <object>Account</object>
     </objectPermissions>
     <recordTypeVisibilities>
         <default>true</default>
