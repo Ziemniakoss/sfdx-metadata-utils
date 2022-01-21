@@ -35,7 +35,9 @@ export async function promptForSObjectName(): Promise<string> {
 	const sObjectChoices = await new CustomObjectFilesFinder()
 		.findFiles()
 		.then((files) =>
-			files.map((file) => extractFileName(file, SOBJECT_FILE_EXTENSION))
+			files
+				.map((file) => extractFileName(file, SOBJECT_FILE_EXTENSION))
+				.sort()
 		);
 	const selectedSObject = await prompt([
 		{

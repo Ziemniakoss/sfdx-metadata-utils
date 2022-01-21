@@ -22,3 +22,4 @@ It works in fully offline mode, so any changes made by this plugin have to be de
 #### SObject accesses
 
 -   check sObject access
+-   set sObject access

@@ -1,0 +1,17 @@
+{
+	"description": "Set sObject access for this profile",
+	"flag:profile:description": "Profile name",
+	"flag:sobject:description": "SObject name",
+	"accessType:prompt": "What can this profile do?",
+	"accessType:create": "Create",
+	"accessType:delete": "Delete",
+	"accessType:edit": "Edit",
+	"accessType:edit-all": "Edit all",
+	"accessType:read": "View",
+	"accessType:read-all": "View all",
+	"errors:readAllRequiresRead": "Read all permission requires read access",
+	"errors:modifyAllRequiresEdit": "Edit all permission requires edit access",
+	"errors:deleteRequiresEdit": "Deletion permission requires edit access",
+	"errors:editRequiresRead": "Edition permission requires read access",
+	"errors:createRequiresRead": "Creation permission requires read access"
+}
