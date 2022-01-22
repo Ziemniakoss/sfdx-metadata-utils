@@ -27,7 +27,9 @@ jobs:
         uses: actions/setup-node@v2
       - name: instal dependencies
         run: npm ci
-      - name: Run typescirpt compilation
+      - name: Build
+        run: npm run build
+      - name: Check if prepack will work
         run: npm run prepack
   run-tests-on-linux:
     runs-on: ubuntu-latest
