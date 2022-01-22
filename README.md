@@ -5,6 +5,8 @@
 ![quality](https://img.shields.io/npms-io/quality-score/sfdx-metadata-utils)
 [![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/sfdx-metadata-utils)](https://snyk.io/test/npm/sfdx-metadata-utils)
 
+## Introduction
+
 This plugin helps with metadata management.
 It allows for basic formatting and modifing of metadata files.
 It works in fully offline mode, so any changes made by this plugin have to be deployed manually.
