@@ -28,7 +28,7 @@ jobs:
       - name: instal dependencies
         run: npm ci
       - name: Build
-        run: npm build
+        run: npm run build
       - name: Check if prepack will work
         run: npm run prepack
   run-tests-on-linux:
