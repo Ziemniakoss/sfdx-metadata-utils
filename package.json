@@ -4,9 +4,6 @@
 	"author": "Ziemniakoss",
 	"bugs": "https://github.com/Ziemniakoss/sfdx-metadata-utils/issues",
 	"dependencies": {
-		"@oclif/command": "^1",
-		"@oclif/config": "^1",
-		"@oclif/errors": "^1",
 		"@salesforce/command": "^4.0.0",
 		"@salesforce/core": "^2",
 		"inquirer": "^8.2.0",
