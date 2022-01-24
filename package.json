@@ -1,21 +1,26 @@
 {
 	"name": "sfdx-metadata-utils",
+	"description": "Unofficial utilities for metadata manipulation",
 	"version": "0.4.2",
 	"author": "Ziemniakoss",
 	"bugs": "https://github.com/Ziemniakoss/sfdx-metadata-utils/issues",
 	"dependencies": {
-		"@salesforce/command": "^4.2.1",
+		"@oclif/command": "^1.8.16",
+		"@oclif/config": "^1.18.2",
+		"@salesforce/command": "^2.0.0",
+		"@salesforce/core": "^2.33.1",
 		"inquirer": "^8.2.0",
 		"node-dir": "^0.1.17",
 		"xml2js": "^0.4.23"
 	},
 	"devDependencies": {
-		"@oclif/test": "^1",
 		"@oclif/dev-cli": "^1.26.10",
+		"@oclif/test": "^2.0.3",
 		"@types/chai": "^4",
 		"@types/mocha": "^8",
 		"chai": "^4",
 		"eslint": "^7",
+		"lodash": "^4.17.21",
 		"mocha": "^8.1.3",
 		"nyc": "^15",
 		"prettier": "^2",
